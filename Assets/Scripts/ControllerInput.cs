@@ -16,8 +16,8 @@ public class ControllerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position += (Vector3)movement * speed * Time.deltaTime; 
-        transform.position = movement;
+        transform.position += (Vector3)movement * speed * Time.deltaTime; 
+        //transform.position = movement;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -33,9 +33,9 @@ public class ControllerInput : MonoBehaviour
             SFX.Play();
         }
     }
-    public void OnPoint(InputAction.CallbackContext context)
-    {
-        //the same as Mouse.current.position.ReadValue();
-        movement = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-    }
+    //public void OnPoint(InputAction.CallbackContext context)
+    //{
+    //    //the same as Mouse.current.position.ReadValue();
+    //    movement = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+    //}
 }
