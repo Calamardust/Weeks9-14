@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Sigths : MonoBehaviour
 {
+    public float t;
     private float speed = 10;
     public Vector2 movement;
     //public AudioSource SFX;
@@ -26,12 +27,16 @@ public class Sigths : MonoBehaviour
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
+        
+
         Debug.Log("attack" + context.phase);
         if (context.started == true)
         {
-          SpriteRenderer.color = Color.blue;
-            //corutine or timer
+            SpriteRenderer.color = Color.blue;
         }
-        
+        if (context.started == false)
+        {
+            SpriteRenderer.color = Color.red;
+        }
     }
 }
