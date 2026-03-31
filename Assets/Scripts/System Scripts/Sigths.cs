@@ -3,11 +3,19 @@ using UnityEngine.InputSystem;
 
 public class Sigths : MonoBehaviour
 {
-    public float t;
+    public float cooldownTime;
+
+    public bool cooldown;
+
     private float speed = 10;
+
     public Vector2 movement;
+
     //public AudioSource SFX;
+
     public SpriteRenderer SpriteRenderer;
+
+    public ParticleSystem ParticleSystem;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,18 +33,21 @@ public class Sigths : MonoBehaviour
     {
         movement = context.ReadValue<Vector2>();
     }
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnJump(InputAction.CallbackContext context)
     {
         
-
-        Debug.Log("attack" + context.phase);
-        if (context.started == true)
+        
+        if (context.performed && !cooldown)
         {
-            SpriteRenderer.color = Color.blue;
-        }
-        if (context.started == false)
-        {
+            cooldown = true;
+            //StartCoroutine()
             SpriteRenderer.color = Color.red;
+            ParticleSystem.Play();
+            
+        }
+        else
+        {
+            SpriteRenderer.color = Color.green;
         }
     }
 }
